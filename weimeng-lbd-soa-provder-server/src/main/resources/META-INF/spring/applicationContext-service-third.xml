@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd 
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+	<bean id="phoneZoneService" class="com.weimob.arch.demo.service.third.impl.PhoneZoneServiceImpl">
+		<property name="baseUrl" value="${phone_zone_base_Url}"/>
+	</bean>
+	
+	<bean id="httpClientEnhanceConfig" class="com.weimob.http.client.config.HttpClientEnhanceConfig">
+        <property name="maxTotal" value="500"/>
+        <property name="defaultMaxPerRoute" value="50"/>
+        <property name="connectTimeout" value="${http_connectTimeout}"/>
+        <property name="readTimeout" value="${http_readTimeout}"/>
+        <property name="isUsePool" value="true"/>
+        <property name="logChannel" value="${http_logChannel}"/>
+        <property name="requestContentEncoding" value="UTF-8"/>
+        <property name="retryRequestCount" value="${http_retryRequestCount}" />
+        <property name="hostMaxPerRoute">
+            <map>
+                <entry key="www.weimob.com" value="200" />
+            </map>
+        </property>
+        <property name="asynSoaMonitorService" ref="asynSoaMonitorService"/>
+     </bean>
+</beans>
+

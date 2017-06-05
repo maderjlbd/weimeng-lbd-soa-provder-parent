@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weimob.arch.demo.dao.PartnerDao">
+	
+	<resultMap type="com.weimob.arch.demo.model.Partner" id="partnerResultMap">
+		<result column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="phone" property="phone"/>
+		<result column="image" property="image"/>
+		<result column="sex" property="sex"/>
+	</resultMap>
+	
+	<!-- 根据名称查询id序列 -->
+	<select id="findPartnerListBySex" resultMap="partnerResultMap" parameterType="java.lang.Integer">
+		SELECT
+			id,
+			name,
+			phone,
+			image,
+			sex
+		FROM
+			t_partner
+		WHERE 1=1
+		<if test="_parameter!=null">  
+		    AND sex = #{sex}
+		</if>
+		/*partner.findPartnerListBySex*/
+	</select>
+	
+</mapper>

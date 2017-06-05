@@ -1,0 +1,18 @@
+table{
+    border-collapse:collapse;
+}
+table td,
+table th {
+    border:1px solid #333;
+}
+#paramterInput,
+#invokeOnput{
+    height: 380px;
+    width: 100%;
+}
+#invokeOnput{
+    overflow: auto;
+}
+#url_content{
+    height: 20px;
+}
